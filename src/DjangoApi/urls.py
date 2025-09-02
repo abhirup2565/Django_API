@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from core.views import TestView
+from core.views import PostView,PostCreateView,PostListCreateView
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
@@ -24,5 +24,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),    
     path('api/token/',obtain_auth_token,name='obtain-token'),
-    path('',TestView.as_view(),name='test')
+    path('',PostView.as_view(),name='Post-View'),
+    path('create/',PostCreateView.as_view(),name='Post-Create-view'),
+    path('listcreate/',PostListCreateView.as_view(),name='Post-List-Create-view'),
 ]
